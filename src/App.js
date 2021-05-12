@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
-function App() {
+export default function App() {
+  const [result, setResult] = useState(1);
+  const changeInput = (event) => {
+    setResult(event.target.value / 16);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="container">
+      <div className="form-input">
+        <div className="wrapper">
+          <input type="number" placeholder="16" onChange={changeInput} autoFocus={true} />
+          <div className="text-px">
+            <h1>px</h1>
+          </div>
+        </div>
+        <span>=</span>
+        <div className="input-rem">
+          <h1>{result} rem</h1>
+        </div>
+      </div>
+    </main>
   );
 }
-
-export default App;
